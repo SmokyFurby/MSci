@@ -2,11 +2,11 @@
 
 The purpose of the Mathematica notebooks in this repository is to build up the governing equations for the model, find a solution representing the travelling waves and to create six different animations which display rotational and elastic waves. Although comments are provided throughout the source code, a brief outline of the notebooks is given in this readme file.
 
-1) eulerequations.nb
+1) euler_equations.nb
 
 First, we build up the full model in the notebook. However, the explicit equations would be too complicated to display explicitly. Instead, we make assumptions on both travelling waves, leaving us with two PDEs.
 
-2) matrixwave.nb
+2) matrix_wave.nb
 
 The aim of this notebook is to substitute a plane wave ansatz into the PDE to obtain a solution for the elastic and rotational waves.
 
