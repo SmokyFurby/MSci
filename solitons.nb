@@ -1,0 +1,357 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     14089,        349]
+NotebookOptionsPosition[     12499,        318]
+NotebookOutlinePosition[     12854,        334]
+CellTagsIndexPosition[     12811,        331]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Animating the soliton wave", "Title",
+ CellChangeTimes->{{3.771061720875766*^9, 
+  3.77106173306003*^9}},ExpressionUUID->"5ef104e7-5d4c-4669-9725-\
+61232279e022"],
+
+Cell["\<\
+For this animation, the solutions from Section 4.4 in the project are used. \
+The rotational wave is a (longitudinal) soliton, while the elastic wave is a \
+rescaled longitudinal soliton. Define a torus, rotations and displacements \
+here. The equilibrium position of the ring is y.\
+\>", "Text",
+ CellChangeTimes->{{3.5934359897096143`*^9, 3.593435990577193*^9}, {
+  3.5934361789118323`*^9, 3.5934361932534*^9}, {3.593436407438286*^9, 
+  3.593436425655439*^9}, {3.5955012894415007`*^9, 3.595501290411156*^9}, {
+  3.5993747517621403`*^9, 3.5993747850771856`*^9}, {3.6021808551234727`*^9, 
+  3.602180867579713*^9}, {3.6021810618854704`*^9, 3.602181069018197*^9}, {
+  3.602767017711237*^9, 3.6027670465683594`*^9}, {3.6036402200893526`*^9, 
+  3.603640252261182*^9}, {3.7710617157260733`*^9, 
+  3.771061719140606*^9}},ExpressionUUID->"f0b39e62-f929-4a25-8b53-\
+76d2b161aa3b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "=", "3"}], ";", 
+  RowBox[{"r", "=", "1"}], ";", 
+  RowBox[{"ring", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"R", "+", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "v", "]"}]}]}], ")"}], " ", 
+      RowBox[{"Sin", "[", "u", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "v", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"R", "+", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "v", "]"}]}]}], ")"}], " ", 
+      RowBox[{"Cos", "[", "u", "]"}]}]}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"rotate", "[", "theta_", "]"}], ":=", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{"theta", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"rotaring", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rotate", "[", 
+      RowBox[{"4", " ", 
+       RowBox[{"ArcTan", "[", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"y", "+", "10"}], ")"}]}], "+", 
+          RowBox[{"20", "t"}]}], "]"}], "]"}]}], "]"}], ".", "ring"}], "+", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "y", ",", "0"}], "}"}]}]}], ";", 
+  RowBox[{
+   RowBox[{"long", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{"0.6", 
+    RowBox[{"ArcTan", "[", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"y", "+", "10"}], ")"}]}], "+", 
+       RowBox[{"20", "t"}]}], "]"}], "]"}]}]}], ";", 
+  RowBox[{
+   RowBox[{"trans", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", "0"}], ";", 
+  RowBox[{
+   RowBox[{"disp", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"long", "[", 
+      RowBox[{"y", ",", "t"}], "]"}], ",", 
+     RowBox[{"trans", "[", 
+      RowBox[{"y", ",", "t"}], "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdxUsow3EAB/C/cVjhxGHavFleeWwkRfpLeeSxeaYxw0w0G2NaWhQpXCQ1
+HAxrhXkUO6AkYg8XtZFHpCSpvwO5GBK/7//w6RPdqq1q51AUJSCw0qZLl54y
+NJWhEuEkf3MpdppUElxcZJdjd3FcM1bfBirx5YLYgCs8hYML5KefHCOWhPs0
+a9hu7sG5a9ZIrYOhQ/35UfibFyDGm3IjOzdx26UjZ/6luXHQ56+64ZyhHzpn
+evGr+lmPpW9bAzh4w2fGc01HS1gxlrGCx0MmVrGsVnAlI9/ntl3jgqzavHgP
+Qxt2rewtMTpKSJYEmDg49lEcgQ/l/ewd+eWN2O27U2DhsX4IL9EX7JzJMCe+
+MC26cN++3ZtAbt2Zv8Ico+U0mfx+EOjAX34vdSlk3tlgPU59j+eXehl61FUi
+wNkn3Osy8sOe6gbXVIuGK8mWiuURrOB227rIH9Pr7D17iiktWTM5y/4Pq5zq
+0w==
+  "],ExpressionUUID->"04022c94-7a2a-42ce-b65d-1326d20c3bdc"],
+
+Cell["\<\
+The design of each ring will be white with four coloured stripes.\
+\>", "Text",
+ CellChangeTimes->{{3.5999213212740135`*^9, 3.599921372167692*^9}, {
+  3.599922345306678*^9, 3.5999223854532456`*^9}, {3.771061744267702*^9, 
+  3.7710617467954483`*^9}},ExpressionUUID->"e5a106bb-9b2a-43fd-b0ec-\
+9168830cd0db"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stripyring", "[", 
+   RowBox[{"y_", ",", "t_", ",", "colour_"}], "]"}], ":=", 
+  RowBox[{"ParametricPlot3D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rotaring", "[", 
+      RowBox[{"y", ",", "t"}], "]"}], "+", 
+     RowBox[{"disp", "[", 
+      RowBox[{"y", ",", "t"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"u", ",", "0", ",", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"v", ",", "0", ",", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+    RowBox[{"PlotPoints", "\[Rule]", "40"}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+    RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}], ",", 
+    RowBox[{"MeshShading", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"colour", ",", "colour", ",", "White", ",", "White"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"colour", ",", "colour", ",", "White", ",", "White"}], 
+        "}"}]}], "}"}]}], ",", 
+    RowBox[{"MeshStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"None", ",", "None"}], "}"}]}], ",", 
+    RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+    RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+    RowBox[{"Background", "\[Rule]", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"1.0", ",", "1.0", ",", "0.9"}], "]"}]}], ",", 
+    RowBox[{"ViewPoint", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2", ",", "1"}], "}"}]}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "12"}], ",", "12"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", "4"}], "}"}]}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5925876893665047`*^9, 3.5925876957105827`*^9}, {
+  3.5927499914878287`*^9, 3.592749994379759*^9}, {3.5931771709235945`*^9, 
+  3.5931771803959136`*^9}, {3.593180723483552*^9, 3.5931807519705563`*^9}, {
+  3.599979846672845*^9, 3.5999798468909893`*^9}, {3.5999898876115513`*^9, 
+  3.599989888239967*^9}},ExpressionUUID->"009a25cc-3209-407f-aeb7-\
+322d0c56923b"],
+
+Cell["\<\
+Defining a frame for arbitrary time t. Each frame will have six rings, each \
+with a different colour and equilibrium position.\
+\>", "Text",
+ CellChangeTimes->{{3.5934362244502125`*^9, 3.593436275009941*^9}, {
+  3.5999799449829025`*^9, 3.599979956270373*^9}, {3.6021806227925043`*^9, 
+  3.602180664179942*^9}, {3.6027671196177793`*^9, 3.6027671533491316`*^9}, {
+  3.77106174939543*^9, 
+  3.7710617521551733`*^9}},ExpressionUUID->"cfebff4e-7ede-4e74-96b5-\
+fe7d9312ffdb"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"frame", "[", "t_", "]"}], ":=", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "10"}], ",", "t", ",", "Red"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "6"}], ",", "t", ",", "Orange"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "t", ",", "Yellow"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"2", ",", "t", ",", "Green"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"6", ",", "t", ",", "Blue"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"10", ",", "t", ",", "Purple"}], "]"}]}], "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}],
+  FontWeight->"Bold"]], "Input",
+ CellChangeTimes->{3.592587753276063*^9},
+ FontWeight->"Plain",ExpressionUUID->"d22ffb05-e104-4fd3-b683-a228d8897433"],
+
+Cell["\<\
+The other animation notebooks in the repository use 25 frames. However, I \
+will use 28 frames instead to slow the video down, otherwise the soliton will \
+travel a bit too fast for the audience to keep track of.\
+\>", "Text",
+ CellChangeTimes->{{3.593436337270476*^9, 3.593436392767499*^9}, {
+   3.5993205831661186`*^9, 3.599320600087318*^9}, 3.5999223956049633`*^9, {
+   3.599923528586727*^9, 3.59992354640652*^9}, {3.5999801313062053`*^9, 
+   3.59998015073306*^9}, {3.6021801444435244`*^9, 3.6021801449538755`*^9}, {
+   3.6021805008827333`*^9, 3.602180550327485*^9}, {3.6021806875534306`*^9, 
+   3.6021808188744383`*^9}, {3.6027670972419386`*^9, 3.602767107329624*^9}, {
+   3.603567535281456*^9, 3.603567557419711*^9}, {3.771061753940233*^9, 
+   3.7710617671627817`*^9}},ExpressionUUID->"39951cf8-fae9-4ac0-9a28-\
+47df1c4d2400"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NFrames", "=", "28"}], ";", " ", 
+  RowBox[{
+   RowBox[{"tFrame", "[", "k_", "]"}], ":=", 
+   FractionBox[
+    RowBox[{" ", "k"}], "NFrames"]}]}]], "Input",
+ CellChangeTimes->{
+  3.599320604573285*^9, 3.599327943815974*^9, {3.599328930656027*^9, 
+   3.599328931302455*^9}, {3.599920361908141*^9, 3.5999203795438113`*^9}, {
+   3.5999216555732393`*^9, 3.5999216761338453`*^9}, {3.5999235489391956`*^9, 
+   3.5999235495105743`*^9}, {3.5999242125233297`*^9, 3.599924254340003*^9}, {
+   3.5999800921793118`*^9, 3.599980094384771*^9}, {3.6009435484911523`*^9, 
+   3.600943549498819*^9}, {3.602180480922509*^9, 
+   3.6021804812126856`*^9}},ExpressionUUID->"9d227dec-bde9-4875-bd0c-\
+c0c8656f0f63"],
+
+Cell["Create a table of frames for the animation.", "Text",
+ CellChangeTimes->{{3.5934363232271075`*^9, 3.593436334552664*^9}, {
+  3.5934363969142656`*^9, 3.5934364015263424`*^9}, {3.599980153552926*^9, 
+  3.5999801749721007`*^9}, {3.6021801343658504`*^9, 3.6021801883686323`*^9}, {
+  3.602180517442706*^9, 3.602180519862297*^9}, {3.6021805546943784`*^9, 
+  3.602180555691039*^9}, {3.7710617589759283`*^9, 
+  3.771061761850637*^9}},ExpressionUUID->"dcb5391c-4a84-4a07-886b-\
+fa8e7c6a0e8d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"frames", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"frame", "[", 
+      RowBox[{"tFrame", "[", "k", "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "NFrames"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.5999203431357183`*^9, 3.599920393684169*^9}, {
+  3.599920487905521*^9, 3.5999205183376613`*^9}, {3.599921647341792*^9, 
+  3.599921694284857*^9}, {3.599921814231233*^9, 3.5999218193296084`*^9}, {
+  3.5999223318627815`*^9, 3.5999223323370953`*^9}, {3.5999235229640064`*^9, 
+  3.5999235254266357`*^9}, {3.5999801057322803`*^9, 3.599980106240616*^9}, {
+  3.600943545697303*^9, 3.6009435463707476`*^9}, {3.602180487871111*^9, 
+  3.6021804884835033`*^9}},ExpressionUUID->"d079493f-3b18-4d88-8ccf-\
+c057a60f862c"],
+
+Cell["Export the table of frames as a GIF animation.", "Text",
+ CellChangeTimes->{{3.602180095006778*^9, 3.602180126819846*^9}, {
+  3.771061769360622*^9, 
+  3.771061771824888*^9}},ExpressionUUID->"ec6f690a-05a7-49a0-a009-\
+fec256765a21"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<soliton1.gif\>\"", ",", "frames"}], "]"}]], "Input",
+ CellChangeTimes->{{3.592587773558362*^9, 3.592587773777124*^9}, {
+   3.59274398048081*^9, 3.592743981661598*^9}, {3.5927657951970577`*^9, 
+   3.5927657963488245`*^9}, {3.5927683984927483`*^9, 3.59276839890102*^9}, {
+   3.593176810068863*^9, 3.593176810537176*^9}, {3.593281947352887*^9, 
+   3.593281947990311*^9}, {3.5993136924831305`*^9, 3.5993136934507713`*^9}, {
+   3.5993167486545877`*^9, 3.599316753306666*^9}, 3.599923573222265*^9, {
+   3.599984353298155*^9, 3.599984353467268*^9}, {3.6009435562953157`*^9, 
+   3.6009435564514194`*^9}, {3.60356751255713*^9, 
+   3.6035675236367908`*^9}},ExpressionUUID->"5a016722-ff7a-418e-a5a4-\
+d0e15446d0e7"],
+
+Cell[BoxData["\<\"soliton1.gif\"\>"], "Output",
+ CellChangeTimes->{3.5927499415515156`*^9, 3.5927658865650096`*^9, 
+  3.5931769050132036`*^9, 3.5931803733249564`*^9, 3.5933536423474655`*^9, 
+  3.599333678240796*^9, 3.5999186306284466`*^9, 
+  3.5999350612208834`*^9},ExpressionUUID->"89520d8f-85fc-4f0b-922b-\
+aa77a5910db5"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 636},
+WindowMargins->{{Automatic, 313}, {Automatic, 14}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 168, 3, 98, "Title",ExpressionUUID->"5ef104e7-5d4c-4669-9725-61232279e022"],
+Cell[750, 27, 882, 14, 81, "Text",ExpressionUUID->"f0b39e62-f929-4a25-8b53-76d2b161aa3b"],
+Cell[1635, 43, 2596, 76, 178, "Input",ExpressionUUID->"04022c94-7a2a-42ce-b65d-1326d20c3bdc"],
+Cell[4234, 121, 316, 6, 35, "Text",ExpressionUUID->"e5a106bb-9b2a-43fd-b0ec-9168830cd0db"],
+Cell[4553, 129, 2195, 57, 157, "Input",ExpressionUUID->"009a25cc-3209-407f-aeb7-322d0c56923b"],
+Cell[6751, 188, 481, 9, 58, "Text",ExpressionUUID->"cfebff4e-7ede-4e74-96b5-fe7d9312ffdb"],
+Cell[7235, 199, 1017, 26, 94, "Input",ExpressionUUID->"d22ffb05-e104-4fd3-b683-a228d8897433"],
+Cell[8255, 227, 841, 13, 81, "Text",ExpressionUUID->"39951cf8-fae9-4ac0-9a28-47df1c4d2400"],
+Cell[9099, 242, 725, 15, 49, "Input",ExpressionUUID->"9d227dec-bde9-4875-bd0c-c0c8656f0f63"],
+Cell[9827, 259, 489, 7, 35, "Text",ExpressionUUID->"dcb5391c-4a84-4a07-886b-fa8e7c6a0e8d"],
+Cell[10319, 268, 803, 17, 30, "Input",ExpressionUUID->"d079493f-3b18-4d88-8ccf-c057a60f862c"],
+Cell[11125, 287, 237, 4, 35, "Text",ExpressionUUID->"ec6f690a-05a7-49a0-a009-fec256765a21"],
+Cell[CellGroupData[{
+Cell[11387, 295, 758, 12, 30, "Input",ExpressionUUID->"5a016722-ff7a-418e-a5a4-d0e15446d0e7"],
+Cell[12148, 309, 323, 5, 34, "Output",ExpressionUUID->"89520d8f-85fc-4f0b-922b-aa77a5910db5"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

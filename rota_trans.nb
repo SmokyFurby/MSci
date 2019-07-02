@@ -1,0 +1,313 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11587,        305]
+NotebookOptionsPosition[     10133,        277]
+NotebookOutlinePosition[     10485,        293]
+CellTagsIndexPosition[     10442,        290]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Animating a transverse elastic wave and a longitudinal rotational wave\
+\>", "Title",
+ CellChangeTimes->{{3.771061504670156*^9, 3.7710615174610453`*^9}, 
+   3.7710616134020023`*^9, {3.771061901839602*^9, 
+   3.7710619134204493`*^9}},ExpressionUUID->"e49a962f-4285-4d80-9420-\
+719f25888cd0"],
+
+Cell["\<\
+Define a torus, rotations and displacements here. The equilibrium position of \
+the ring is y. The three objects theta,long[y_,t_] and disp[y_,t_] will be \
+different for each animation.\
+\>", "Text",
+ CellChangeTimes->{{3.5934359897096143`*^9, 3.593435990577193*^9}, {
+   3.5934361789118323`*^9, 3.5934361932534*^9}, {3.593436407438286*^9, 
+   3.593436425655439*^9}, {3.5955012894415007`*^9, 3.595501290411156*^9}, {
+   3.6027668508206463`*^9, 3.6027668806554174`*^9}, {3.6027669290404797`*^9, 
+   3.602767002907428*^9}, 3.6027670607987905`*^9, {3.6027672859740033`*^9, 
+   3.602767287714156*^9}, {3.603552412935298*^9, 3.6035524329484353`*^9}, {
+   3.6035677510302334`*^9, 3.6035677559645443`*^9}, {3.6035702694519224`*^9, 
+   3.6035702790674667`*^9}, {3.7710616169031677`*^9, 3.771061623056526*^9}, 
+   3.771061919683991*^9},ExpressionUUID->"99a198f8-0e9e-4d8a-90ac-\
+c55c689eace2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "=", "3"}], ";", 
+  RowBox[{"r", "=", "1"}], ";", 
+  RowBox[{"ring", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"R", "+", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "v", "]"}]}]}], ")"}], " ", 
+      RowBox[{"Sin", "[", "u", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "v", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"R", "+", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "v", "]"}]}]}], ")"}], " ", 
+      RowBox[{"Cos", "[", "u", "]"}]}]}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"rotate", "[", "theta_", "]"}], ":=", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{"theta", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"rotaring", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rotate", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{" ", "Pi"}], "4"], 
+       RowBox[{"Cos", "[", 
+        RowBox[{"t", "-", 
+         FractionBox[
+          RowBox[{"y", " ", "Pi"}], "20"]}], "]"}]}], "]"}], ".", "ring"}], 
+    "+", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "y", ",", "0"}], "}"}]}]}], ";", 
+  RowBox[{
+   RowBox[{"long", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", "0"}], ";", 
+  RowBox[{
+   RowBox[{"trans", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"t", "-", 
+     FractionBox[
+      RowBox[{"y", " ", "Pi"}], "20"]}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"disp", "[", 
+    RowBox[{"y_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"long", "[", 
+      RowBox[{"y", ",", "t"}], "]"}], ",", 
+     RowBox[{"trans", "[", 
+      RowBox[{"y", ",", "t"}], "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5925876515832996`*^9, 3.5925876671934814`*^9}, {
+  3.592587860937886*^9, 3.592587907205905*^9}, {3.5925880216024513`*^9, 
+  3.5925880251338844`*^9}, {3.5925880643702908`*^9, 3.592588225613016*^9}, {
+  3.59274389015055*^9, 3.592743905811998*^9}, {3.592768375753578*^9, 
+  3.5927683889593887`*^9}, {3.5931732451456585`*^9, 3.5931732488441257`*^9}, {
+  3.593173400128049*^9, 3.593173403886557*^9}, {3.5931807335362587`*^9, 
+  3.5931807374999027`*^9}, {3.6035677635159464`*^9, 3.603567774227552*^9}, {
+  3.603567978503244*^9, 
+  3.6035679790282736`*^9}},ExpressionUUID->"1b807800-002a-4c0b-ad2f-\
+a95a50f88ff6"],
+
+Cell["\<\
+The design of each ring will be white with four coloured stripes.\
+\>", "Text",
+ CellChangeTimes->{{3.771061633789218*^9, 
+  3.771061636735229*^9}},ExpressionUUID->"9426cc68-433e-45a4-b80f-\
+80c4503abcd6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stripyring", "[", 
+   RowBox[{"y_", ",", "t_", ",", "colour_"}], "]"}], ":=", 
+  RowBox[{"ParametricPlot3D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rotaring", "[", 
+      RowBox[{"y", ",", "t"}], "]"}], "+", 
+     RowBox[{"disp", "[", 
+      RowBox[{"y", ",", "t"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"u", ",", "0", ",", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"v", ",", "0", ",", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+    RowBox[{"PlotPoints", "\[Rule]", "40"}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+    RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}], ",", 
+    RowBox[{"MeshShading", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"colour", ",", "colour", ",", "White", ",", "White"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"colour", ",", "colour", ",", "White", ",", "White"}], 
+        "}"}]}], "}"}]}], ",", 
+    RowBox[{"MeshStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"None", ",", "None"}], "}"}]}], ",", 
+    RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+    RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+    RowBox[{"Background", "\[Rule]", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"1.0", ",", "1.0", ",", "0.9"}], "]"}]}], ",", 
+    RowBox[{"ViewPoint", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2", ",", "1"}], "}"}]}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "11"}], ",", "11"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5925876893665047`*^9, 3.5925876957105827`*^9}, {
+  3.5927499914878287`*^9, 3.592749994379759*^9}, {3.5931771709235945`*^9, 
+  3.5931771803959136`*^9}, {3.593180723483552*^9, 3.5931807519705563`*^9}, {
+  3.60357057124984*^9, 
+  3.6035705752750983`*^9}},ExpressionUUID->"3cd95bae-c286-4144-8b88-\
+e1898f85ac1d"],
+
+Cell["\<\
+Defining a frame for arbitrary time t. Each frame will have six rings, each \
+with a different colour and equilibrium position.\
+\>", "Text",
+ CellChangeTimes->{{3.5934362244502125`*^9, 3.593436275009941*^9}, {
+  3.6027671429382205`*^9, 3.6027671497537365`*^9}, {3.771061626865026*^9, 
+  3.771061630304357*^9}},ExpressionUUID->"92527461-d780-4e57-b60b-\
+5df681465a0f"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"frame", "[", "t_", "]"}], ":=", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "10"}], ",", "t", ",", "Red"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "6"}], ",", "t", ",", "Orange"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "t", ",", "Yellow"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"2", ",", "t", ",", "Green"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"6", ",", "t", ",", "Blue"}], "]"}], ",", 
+       RowBox[{"stripyring", "[", 
+        RowBox[{"10", ",", "t", ",", "Purple"}], "]"}]}], "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}],
+  FontWeight->"Bold"]], "Input",
+ CellChangeTimes->{3.592587753276063*^9},
+ FontWeight->"Plain",ExpressionUUID->"9df7a97f-393e-4236-9d2d-7d583cc073e4"],
+
+Cell["\<\
+25 frames are used for this video. Since it will be exported as a GIF, these \
+frames will be repeated, so the video loops.\
+\>", "Text",
+ CellChangeTimes->{{3.593436337270476*^9, 3.593436392767499*^9}, {
+  3.6035525093667803`*^9, 3.6035526137327213`*^9}, {3.771061639436956*^9, 
+  3.771061642111678*^9}},ExpressionUUID->"1ef1117d-444b-45b9-af5f-\
+84b63008aa8a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NFrames", "=", "25"}], ";", " ", 
+  RowBox[{
+   RowBox[{"tFrame", "[", "k_", "]"}], ":=", 
+   FractionBox[
+    RowBox[{"2", " ", "Pi", " ", "k"}], "NFrames"]}]}]], "Input",ExpressionUUI\
+D->"16263fbd-726c-41d9-843d-9a37affb8b3e"],
+
+Cell["Create a table of frames for the animation", "Text",
+ CellChangeTimes->{{3.5934363232271075`*^9, 3.593436334552664*^9}, {
+  3.5934363969142656`*^9, 3.5934364015263424`*^9}, {3.771061643756606*^9, 
+  3.771061646567569*^9}},ExpressionUUID->"40a6eb48-cf1a-40c2-8e68-\
+f999da4c854a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"frames", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"frame", "[", 
+      RowBox[{"tFrame", "[", "k", "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", "NFrames"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",ExpressionUUID->"7fc07abe-e3a2-4b2c-b8fb-bfb75aefa13b"],
+
+Cell["Export the table as a GIF animation", "Text",
+ CellChangeTimes->{{3.603552551810192*^9, 3.6035525649839487`*^9}, {
+  3.7710616481005287`*^9, 
+  3.77106164997541*^9}},ExpressionUUID->"d7ba8c02-ce63-4472-a1d5-\
+3b675dd2cee2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<rota_trans.gif\>\"", ",", "frames"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.592587773558362*^9, 3.592587773777124*^9}, {
+  3.59274398048081*^9, 3.592743981661598*^9}, {3.5927657951970577`*^9, 
+  3.5927657963488245`*^9}, {3.5927683984927483`*^9, 3.59276839890102*^9}, {
+  3.593176810068863*^9, 3.593176810537176*^9}, {3.593281947352887*^9, 
+  3.593281947990311*^9}, {3.603456044270962*^9, 3.603456048704211*^9}, {
+  3.6035680788763466`*^9, 
+  3.6035680819625225`*^9}},ExpressionUUID->"3c0a62a0-dc6f-4167-9315-\
+12259bf83242"]
+}, Open  ]]
+},
+WindowSize->{707, 636},
+WindowMargins->{{4, Automatic}, {Automatic, 2}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 300, 6, 222, "Title",ExpressionUUID->"e49a962f-4285-4d80-9420-719f25888cd0"],
+Cell[882, 30, 895, 14, 58, "Text",ExpressionUUID->"99a198f8-0e9e-4d8a-90ac-c55c689eace2"],
+Cell[1780, 46, 2474, 71, 218, "Input",ExpressionUUID->"1b807800-002a-4c0b-ad2f-a95a50f88ff6"],
+Cell[4257, 119, 215, 5, 35, "Text",ExpressionUUID->"9426cc68-433e-45a4-b80f-80c4503abcd6"],
+Cell[4475, 126, 2146, 57, 157, "Input",ExpressionUUID->"3cd95bae-c286-4144-8b88-e1898f85ac1d"],
+Cell[6624, 185, 378, 7, 58, "Text",ExpressionUUID->"92527461-d780-4e57-b60b-5df681465a0f"],
+Cell[7005, 194, 1017, 26, 94, "Input",ExpressionUUID->"9df7a97f-393e-4236-9d2d-7d583cc073e4"],
+Cell[8025, 222, 372, 7, 58, "Text",ExpressionUUID->"1ef1117d-444b-45b9-af5f-84b63008aa8a"],
+Cell[8400, 231, 264, 7, 49, "Input",ExpressionUUID->"16263fbd-726c-41d9-843d-9a37affb8b3e"],
+Cell[8667, 240, 285, 4, 35, "Text",ExpressionUUID->"40a6eb48-cf1a-40c2-8e68-f999da4c854a"],
+Cell[8955, 246, 329, 9, 30, "Input",ExpressionUUID->"7fc07abe-e3a2-4b2c-b8fb-bfb75aefa13b"],
+Cell[9287, 257, 229, 4, 35, "Text",ExpressionUUID->"d7ba8c02-ce63-4472-a1d5-3b675dd2cee2"],
+Cell[9519, 263, 598, 11, 30, "Input",ExpressionUUID->"3c0a62a0-dc6f-4167-9315-12259bf83242"]
+}, Open  ]]
+}
+]
+*)
+
